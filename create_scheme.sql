@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS `Follow`;
 DROP TABLE IF EXISTS `Play`;
 DROP TABLE IF EXISTS `Rate`;
 DROP TABLE IF EXISTS `Like`;
+DROP TABLE IF EXISTS `PlaylistTrack`;
+DROP TABLE IF EXISTS `AlbumTrack`;
 DROP TABLE IF EXISTS `Album`;
 DROP TABLE IF EXISTS `Playlist`;
 DROP TABLE IF EXISTS `Track`;
@@ -14,9 +16,9 @@ DROP TABLE IF EXISTS `Users`;
 
 CREATE TABLE `Users` (
   `uid` INT NOT NULL AUTO_INCREMENT,
-  `uname` VARCHAR(45) NOT NULL,
-  `uemail` VARCHAR(45) NOT NULL,
-  `ucity` VARCHAR(45) NOT NULL,
+  `uname` VARCHAR(45),
+  `uemail` VARCHAR(45),
+  `ucity` VARCHAR(45),
   `ulogname` VARCHAR(45) NOT NULL,
   `upw` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`uid`));
@@ -52,6 +54,7 @@ CREATE TABLE `Track` (
   `ttitle` VARCHAR(45) NOT NULL,
   `tduration` VARCHAR(45) NOT NULL,
   `tgenre` VARCHAR(45) NOT NULL,
+  `turl` VARCHAR(200) NOT NULL,
   `aid` INT NOT NULL,
   PRIMARY KEY (`tid`),
   FOREIGN KEY(`aid`)
@@ -128,17 +131,41 @@ CREATE TABLE `Rate` (
 CREATE TABLE `Play` (
   `uid` INT NOT NULL,
   `tid` INT NOT NULL,
-  `type` INT NOT NULL,
+  `ptype` INT NOT NULL,
   `sourceid` INT,
   `ptimestamp` DATETIME NOT NULL,
-  CHECK(type >= 0 AND type <= 2),
+  CHECK(ptype>=0 AND ptype<=2),
   PRIMARY KEY (`uid`, `tid`),
   FOREIGN KEY (`uid`) 
 			REFERENCES `Users` (`uid`),
   FOREIGN KEY (`tid`)
 			REFERENCES `Track` (`tid`)
 );
+-- ----------------------------
+-- Table structure for PlaylistTrack
+-- ----------------------------
+CREATE TABLE `PlaylistTrack` (
+  `pid` INT NOT NULL,
+  `tid` INT NOT NULL,
+  PRIMARY KEY (`pid`, `tid`),
+  FOREIGN KEY (`pid`) 
+			REFERENCES `Playlist` (`pid`),
+  FOREIGN KEY (`tid`)
+			REFERENCES `Track` (`tid`)
+);
 
+-- ----------------------------
+-- Table structure for AlbumTrack
+-- ----------------------------
+CREATE TABLE `AlbumTrack` (
+  `alid` INT NOT NULL,
+  `tid` INT NOT NULL,
+  PRIMARY KEY (`alid`, `tid`),
+  FOREIGN KEY (`alid`) 
+			REFERENCES `Album` (`alid`),
+  FOREIGN KEY (`tid`)
+			REFERENCES `Track` (`tid`)
+);
 
 -- ----------------------------
 -- Table structure for Follow
