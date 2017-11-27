@@ -128,7 +128,10 @@ CREATE TABLE `Rate` (
 CREATE TABLE `Play` (
   `uid` INT NOT NULL,
   `tid` INT NOT NULL,
+  `type` INT NOT NULL,
+  `sourceid` INT,
   `ptimestamp` DATETIME NOT NULL,
+  CHECK(type >= 0 AND type <= 2),
   PRIMARY KEY (`uid`, `tid`),
   FOREIGN KEY (`uid`) 
 			REFERENCES `Users` (`uid`),
