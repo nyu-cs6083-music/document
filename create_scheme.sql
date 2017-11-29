@@ -118,6 +118,7 @@ CREATE TABLE `Rate` (
   `uid` INT NOT NULL,
   `tid` INT NOT NULL,
   `rtimestamp` DATETIME NOT NULL,
+  `score` INT NOT NULL,
   PRIMARY KEY (`uid`, `tid`),
   FOREIGN KEY (`uid`) 
 			REFERENCES `Users` (`uid`),
@@ -135,7 +136,7 @@ CREATE TABLE `Play` (
   `sourceid` INT,
   `ptimestamp` DATETIME NOT NULL,
   CHECK(ptype>=0 AND ptype<=2),
-  PRIMARY KEY (`uid`, `tid`),
+  PRIMARY KEY (`uid`, `tid`, `ptimestamp`),
   FOREIGN KEY (`uid`) 
 			REFERENCES `Users` (`uid`),
   FOREIGN KEY (`tid`)
@@ -147,6 +148,7 @@ CREATE TABLE `Play` (
 CREATE TABLE `PlaylistTrack` (
   `pid` INT NOT NULL,
   `tid` INT NOT NULL,
+  `porder` INT NOT NULL,
   PRIMARY KEY (`pid`, `tid`),
   FOREIGN KEY (`pid`) 
 			REFERENCES `Playlist` (`pid`),
@@ -160,6 +162,7 @@ CREATE TABLE `PlaylistTrack` (
 CREATE TABLE `AlbumTrack` (
   `alid` INT NOT NULL,
   `tid` INT NOT NULL,
+  `aorder` INT NOT NULL,
   PRIMARY KEY (`alid`, `tid`),
   FOREIGN KEY (`alid`) 
 			REFERENCES `Album` (`alid`),
