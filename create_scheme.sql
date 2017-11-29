@@ -39,7 +39,7 @@ CREATE TABLE `Artists` (
     `aname` VARCHAR(45) NOT NULL,
     `adescript` VARCHAR(200) NOT NULL,
     PRIMARY KEY (`aid`));
-    
+
 -- ----------------------------
 -- Records of Artists
 -- ----------------------------
@@ -60,7 +60,7 @@ CREATE TABLE `Track` (
   FOREIGN KEY(`aid`)
 			REFERENCES `Artists` (`aid`)
             );
-  
+
 
 -- ----------------------------
 -- Records of Track
@@ -77,7 +77,7 @@ CREATE TABLE `Playlist` (
   `pdate` DATETIME NOT NULL,
   `uid` INT NOT NULL,
   PRIMARY KEY (`pid`),
-  FOREIGN KEY (`uid`) 
+  FOREIGN KEY (`uid`)
 			REFERENCES `Users` (`uid`)
 );
 
@@ -105,7 +105,7 @@ CREATE TABLE `Like` (
   `aid` INT NOT NULL,
   `ltimestamp` DATETIME NOT NULL,
   PRIMARY KEY (`uid`, `aid`),
-  FOREIGN KEY (`uid`) 
+  FOREIGN KEY (`uid`)
 			REFERENCES `Users` (`uid`),
   FOREIGN KEY (`aid`)
 			REFERENCES `Artists` (`aid`)
@@ -118,8 +118,9 @@ CREATE TABLE `Rate` (
   `uid` INT NOT NULL,
   `tid` INT NOT NULL,
   `rtimestamp` DATETIME NOT NULL,
+  `score` INT NOT NULL,
   PRIMARY KEY (`uid`, `tid`),
-  FOREIGN KEY (`uid`) 
+  FOREIGN KEY (`uid`)
 			REFERENCES `Users` (`uid`),
   FOREIGN KEY (`tid`)
 			REFERENCES `Track` (`tid`)
@@ -135,8 +136,8 @@ CREATE TABLE `Play` (
   `sourceid` INT,
   `ptimestamp` DATETIME NOT NULL,
   CHECK(ptype>=0 AND ptype<=2),
-  PRIMARY KEY (`uid`, `tid`),
-  FOREIGN KEY (`uid`) 
+  PRIMARY KEY (`uid`, `tid`, `ptimestamp`),
+  FOREIGN KEY (`uid`)
 			REFERENCES `Users` (`uid`),
   FOREIGN KEY (`tid`)
 			REFERENCES `Track` (`tid`)
@@ -147,8 +148,9 @@ CREATE TABLE `Play` (
 CREATE TABLE `PlaylistTrack` (
   `pid` INT NOT NULL,
   `tid` INT NOT NULL,
+  `porder` INT NOT NULL,
   PRIMARY KEY (`pid`, `tid`),
-  FOREIGN KEY (`pid`) 
+  FOREIGN KEY (`pid`)
 			REFERENCES `Playlist` (`pid`),
   FOREIGN KEY (`tid`)
 			REFERENCES `Track` (`tid`)
@@ -160,8 +162,9 @@ CREATE TABLE `PlaylistTrack` (
 CREATE TABLE `AlbumTrack` (
   `alid` INT NOT NULL,
   `tid` INT NOT NULL,
+  `aorder` INT NOT NULL,
   PRIMARY KEY (`alid`, `tid`),
-  FOREIGN KEY (`alid`) 
+  FOREIGN KEY (`alid`)
 			REFERENCES `Album` (`alid`),
   FOREIGN KEY (`tid`)
 			REFERENCES `Track` (`tid`)
@@ -175,7 +178,7 @@ CREATE TABLE `Follow` (
   `flweeid` INT NOT NULL,
   `ftimestamp` DATETIME NOT NULL,
   PRIMARY KEY (`flwerid`, `flweeid`),
-  FOREIGN KEY (`flwerid`) 
+  FOREIGN KEY (`flwerid`)
 			REFERENCES `Users` (`uid`),
   FOREIGN KEY (`flweeid`)
 			REFERENCES `Users` (`uid`)

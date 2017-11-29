@@ -17,6 +17,8 @@ HAVING 2*SUM(Track.tid) >= (
     GROUP BY t.aid
     );
 
+INSERT INTO Rate(uid, tid, score, rtimestamp) values('1', '1', '5', now());
+
 SELECT pl.pid, pl.ptitle, pl.uid
 FROM Playlist as pl, User
 WHERE pl.uid = User.uid
@@ -27,6 +29,10 @@ AND User.uid IN (
     AND u.uid = Follow.flweeid
     );
 
+SELECT Track.tid, Track.ttitle
+FROM Track, Artists AS art
+WHERE Track.aid = art.aid
+AND (CONTAIN(Track.ttitle, "love") OR CONTAIN(art.adescript, "love"));
 
 SELECT a1.aid, a2.aid
 FROM Artists AS a1, Artists AS a2, Like AS l1, Like AS l2
@@ -37,7 +43,8 @@ HAVING 2*SUM(l1.uid) >= (
     FROM Like AS l3
     WHERE a1.aid = l3.aid
     GROUP BY a1.aid
-    ) + (
+    )
+AND 2*SUM(l1.uid) >= (
     SELECT SUM(l4.uid)
     FROM Like AS l4
     WHERE a2.aid = l4.aid
