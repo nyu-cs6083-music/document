@@ -32,7 +32,7 @@ AND User.uid IN (
 SELECT Track.tid, Track.ttitle
 FROM Track, Artists AS art
 WHERE Track.aid = art.aid
-AND (CONTAIN(Track.ttitle, "love") OR CONTAIN(art.adescript, "love"));
+AND (CONTAIN(Track.ttitle, "love") OR CONTAIN(art.atitle, "love"));
 
 SELECT a1.aid, a2.aid
 FROM Artists AS a1, Artists AS a2, Like AS l1, Like AS l2
