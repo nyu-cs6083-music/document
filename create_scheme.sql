@@ -54,7 +54,7 @@ CREATE TABLE `Track` (
   `ttitle` VARCHAR(45) NOT NULL,
   `tduration` VARCHAR(45) NOT NULL,
   `tgenre` VARCHAR(45) NOT NULL,
-  `turl` VARCHAR(500) NOT NULL,
+  `turl` LONGTEXT NOT NULL,
   `aid` INT NOT NULL,
   PRIMARY KEY (`tid`),
   FOREIGN KEY(`aid`)
