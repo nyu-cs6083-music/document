@@ -109,21 +109,27 @@ INSERT INTO Follow (flwerid, flweeid, ftimestamp) VALUES ('1', '5', '2017-01-04 
 -- ----------------------------
 -- Data for Play
 -- ----------------------------
+-- ----------------------------
+-- Data for Play
+-- ----------------------------
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('2', '1', 2, '2017-05-11 22:40');
-INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('1', '1', 2, '2017-05-11 22:40');
-INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('1', '2', 1, '2017-05-11 22:40');
+INSERT INTO Play (uid, tid, ptype,ptimestamp) VALUES ('1', '1', 2, '2017-05-11 22:40');
+INSERT INTO Play (uid, tid, ptype, sourceid,ptimestamp) VALUES ('1', '2', 1, '1','2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('2', '2', 2, '2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('2', '3', 2, '2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('2', '4', 2, '2017-05-11 22:40');
-INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('2', '5', 0, '2017-05-11 22:40');
+INSERT INTO Play (uid, tid, ptype,sourceid, ptimestamp) VALUES ('2', '5', 0, '2', '2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('2', '6', 2, '2017-05-11 22:40');
-INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('1', '3', 1, '2017-05-11 22:40');
+INSERT INTO Play (uid, tid, ptype,sourceid, ptimestamp) VALUES ('1', '3', 1, '1','2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('1', '4', 2, '2017-05-11 22:40');
-INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('1', '5', 1, '2017-05-11 22:40');
+INSERT INTO Play (uid, tid, ptype,sourceid, ptimestamp) VALUES ('1', '5', 1,'1', '2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('3', '1', 2, '2017-05-11 22:40');
-INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('4', '1', 1, '2017-05-11 22:40');
+INSERT INTO Play (uid, tid, ptype,sourceid, ptimestamp) VALUES ('4', '1', 1, '2','2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('5', '1', 2, '2017-05-11 22:40');
 
 
+<<<<<<< HEAD:data.sql
 
 
+=======
+>>>>>>> 62c86056be062652df6d82743daa180450aa3f44:insert2.sql

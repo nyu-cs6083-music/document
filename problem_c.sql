@@ -1,6 +1,6 @@
 INSERT INTO Users(uid, uname, uemail, ucity, ulogname, upw) values('1', 'NancyInQueens', 'niq@gmail.com', 'NY', 'nancyinqueens', '123456');
 
-SELECT art.aid, art.name, COUNT(Track.tid)
+SELECT art.aid, art.aname, COUNT(Track.tid)
 FROM Artists as art, Track
 WHERE art.aid = Track.aid
 GROUP BY art.aid;
@@ -12,7 +12,7 @@ AND Track.tgenre='Jazz'
 GROUP BY Track.aid
 HAVING 2*SUM(Track.tid) >= (
     SELECT SUM(t.tid)
-    FROM Artist as a, Track as t
+    FROM Artists as a, Track as t
     WHERE a.aid = t.aid AND a.aid = Track.aid
     GROUP BY t.aid
     );
@@ -20,19 +20,20 @@ HAVING 2*SUM(Track.tid) >= (
 INSERT INTO Rate(uid, tid, score, rtimestamp) values('1', '1', '5', now());
 
 SELECT pl.pid, pl.ptitle, pl.uid
-FROM Playlist as pl, User
-WHERE pl.uid = User.uid
-AND User.uid IN (
+FROM Playlist as pl, Users
+WHERE pl.uid = Users.uid
+AND Users.uid IN (
     SELECT Follow.flwerid
-    FROM Follow, User AS u
+    FROM Follow, Users AS u
     WHERE u.uname = 'NancyInQueens'
     AND u.uid = Follow.flweeid
     );
 
+
 SELECT Track.tid, Track.ttitle
 FROM Track, Artists AS art
 WHERE Track.aid = art.aid
-AND (CONTAIN(Track.ttitle, "love") OR CONTAIN(art.atitle, "love"));
+AND (CONTAINS(Track.ttitle, "love") OR CONTAINS(art.atitle, "love"));
 
 SELECT a1.aid, a2.aid
 FROM Artists AS a1, Artists AS a2, Like AS l1, Like AS l2
