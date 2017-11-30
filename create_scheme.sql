@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `Follow`;
 DROP TABLE IF EXISTS `Play`;
 DROP TABLE IF EXISTS `Rate`;
-DROP TABLE IF EXISTS `Like`;
+DROP TABLE IF EXISTS `Likes`;
 DROP TABLE IF EXISTS `PlaylistTrack`;
 DROP TABLE IF EXISTS `AlbumTrack`;
 DROP TABLE IF EXISTS `Album`;
@@ -54,7 +54,7 @@ CREATE TABLE `Track` (
   `ttitle` VARCHAR(45) NOT NULL,
   `tduration` VARCHAR(45) NOT NULL,
   `tgenre` VARCHAR(45) NOT NULL,
-  `turl` VARCHAR(200) NOT NULL,
+  `turl` LONGTEXT NOT NULL,
   `aid` INT NOT NULL,
   PRIMARY KEY (`tid`),
   FOREIGN KEY(`aid`)
@@ -100,7 +100,7 @@ CREATE TABLE `Album` (
 -- ----------------------------
 -- Table structure for Like
 -- ----------------------------
-CREATE TABLE `Like` (
+CREATE TABLE `Likes` (
   `uid` INT NOT NULL,
   `aid` INT NOT NULL,
   `ltimestamp` DATETIME NOT NULL,

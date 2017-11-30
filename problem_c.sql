@@ -36,7 +36,7 @@ AND (CONTAIN(Track.ttitle, "love") OR CONTAIN(art.atitle, "love"));
 
 SELECT a1.aid, a2.aid
 FROM Artists AS a1, Artists AS a2, Like AS l1, Like AS l2
-WHERE a1.aid = l1.aid AND a2.aid = l2.aid AND l1.uid = l2.uid
+WHERE a1.aid > a2.aid AND a1.aid = l1.aid AND a2.aid = l2.aid AND l1.uid = l2.uid
 GROUP BY a1.aid, a2.aid
 HAVING 2*SUM(l1.uid) >= (
     SELECT SUM(l3.uid)
