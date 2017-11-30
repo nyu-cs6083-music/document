@@ -31,6 +31,7 @@ INSERT INTO Track (tid, ttitle, tduration, tgenre, turl, aid) VALUES ('8', 'xixi
 INSERT INTO Track (tid, ttitle, tduration, tgenre, turl, aid) VALUES ('9', 'Better man', '205', 'Jazz', '', '3');
 INSERT INTO Track (tid, ttitle, tduration, tgenre, turl, aid) VALUES ('10', 'Nature Boy', '223', 'Jazz', '', '4');
 INSERT INTO Track (tid, ttitle, tduration, tgenre, turl, aid) VALUES ('11', 'Lover Man', '110', 'Jazz', '', '5');
+INSERT INTO Track (tid, ttitle, tduration, tgenre, turl, aid) VALUES ('12', 'Love me', '110', 'Jazz', '', '5');
 -- ----------------------------
 -- Data for Playlist
 -- ----------------------------
@@ -109,9 +110,6 @@ INSERT INTO Follow (flwerid, flweeid, ftimestamp) VALUES ('1', '5', '2017-01-04 
 -- ----------------------------
 -- Data for Play
 -- ----------------------------
--- ----------------------------
--- Data for Play
--- ----------------------------
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('2', '1', 2, '2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype,ptimestamp) VALUES ('1', '1', 2, '2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, sourceid,ptimestamp) VALUES ('1', '2', 1, '1','2017-05-11 22:40');
@@ -126,10 +124,3 @@ INSERT INTO Play (uid, tid, ptype,sourceid, ptimestamp) VALUES ('1', '5', 1,'1',
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('3', '1', 2, '2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype,sourceid, ptimestamp) VALUES ('4', '1', 1, '2','2017-05-11 22:40');
 INSERT INTO Play (uid, tid, ptype, ptimestamp) VALUES ('5', '1', 2, '2017-05-11 22:40');
-
-
-<<<<<<< HEAD:data.sql
-
-
-=======
->>>>>>> 62c86056be062652df6d82743daa180450aa3f44:insert2.sql
